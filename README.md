@@ -30,3 +30,7 @@ For use development, need:
 3. use script `npm run dev`
 
 ![display](seezona_test.png)
+![display](1.png)
+![display](2.png)
+![display](3.png)
+![display](4.png)
