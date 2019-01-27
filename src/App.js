@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Grid from '@material-ui/core/Grid';
+
+import SearchContainer from './containers/SearchContainer';
+import WeatherInfoContainer from './containers/WeatherInfoContainer';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Grid container>
+                <p style={{ fontFamily: 'Roboto', fontSize: 11 }}>
+                    Application created on React with Redux! Used Material-UI
+                </p>
+                <SearchContainer />
+                <WeatherInfoContainer />
+            </Grid>
+        );
+    }
 }
 
 export default App;
