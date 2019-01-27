@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';
+import Fab from '@material-ui/core/Fab';
 
+import DialogAbout from '../DialogAbout';
 export const NoWeather = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleClickOpen() {
+        setIsOpen(true);
+    }
+
+    function handleClose() {
+        setIsOpen(false);
+    }
+
     return (
         <Grid
             container
@@ -23,6 +35,7 @@ export const NoWeather = () => {
                 <Grid
                     item
                     container
+                    direction="column"
                     justify="center"
                     alignItems="center"
                     style={{ height: '100%' }}
@@ -30,6 +43,15 @@ export const NoWeather = () => {
                     <h1>
                         NO WEATHER, NO PROBLEM <span role="img">😄</span>
                     </h1>
+                    <h2>BEFORE YOU START</h2>
+                    <Fab
+                        onClick={handleClickOpen}
+                        variant="extended"
+                        color="primary"
+                    >
+                        + CLICK ME
+                    </Fab>
+                    <DialogAbout isOpen={isOpen} handleClose={handleClose} />
                 </Grid>
             </Paper>
         </Grid>

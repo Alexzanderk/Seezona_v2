@@ -1,7 +1,5 @@
 import Api from '../../utils/api';
 
-const request = new Api();
-
 export const GET_REQUEST = 'GET_REQUEST';
 
 export const getRequest = () => {
@@ -15,14 +13,14 @@ export const GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
 export const getWeather = (city, unit) => {
     return dispatch => {
         dispatch(getRequest());
-        return request
+        return Api
             .getCurrentWeather(city, unit)
             .then(({ data }) => {
                 dispatch({
                     type: GET_WEATHER_SUCCESS,
                     citiesWeather: data,
                     currentCityWeather: data,
-                    city: {name:data.name, id: data.id},
+                    city: { name: data.name, id: data.id },
                     unit
                 });
             })
@@ -41,16 +39,40 @@ export const getWeatherFail = data => {
 
 export const REMOVE_WEATHER_SUCCESS = 'REMOVE_WEATHER_SUCCESS';
 
-export const removeCity = city => {
-    return {
-        type: REMOVE_WEATHER_SUCCESS,
-        payload: city
+export const removeCity = (city, cities) => {
+    cities = cities.filter(item => item !== city);
+
+    return dispatch => {
+        dispatch({
+            type: REMOVE_WEATHER_SUCCESS,
+            payload: city
+        });
+
+        dispatch(getWeatherAll(cities));
     };
 };
 
-export const GET_WEATHER_ALL = 'GET_WEATHER_ALL'
+export const GET_WEATHER_ALL_SUCCESS = 'GET_WEATHER_ALL_SUCCESS';
+export const GET_WEATHER_ALL_FAIL = 'GET_WEATHER_ALL_FAIL';
 
-export const getWeatherAll = async (cities) => {
-    console.log(cities)
+export const getWeatherAll = (cities, unit) => {
+    return async dispatch => {
+        dispatch(getRequest());
 
-} 
+        let requests = await Promise.all(
+            cities.map(city =>
+                Api.getCurrentWeather(city, unit).then(({ data }) => data)
+            )
+        ).catch(res => {
+            return {
+                type: GET_WEATHER_ALL_FAIL,
+                payload: res
+            };
+        });
+
+        dispatch({
+            type: GET_WEATHER_ALL_SUCCESS,
+            payload: requests
+        });
+    };
+};

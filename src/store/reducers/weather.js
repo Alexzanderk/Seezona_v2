@@ -6,19 +6,19 @@ import {
     GET_REQUEST,
     GET_WEATHER_FAIL,
     GET_WEATHER_SUCCESS,
-    REMOVE_WEATHER_SUCCESS
+    REMOVE_WEATHER_SUCCESS,
+    GET_WEATHER_ALL_SUCCESS,
+    GET_WEATHER_ALL_FAIL
 } from '../actions/weather_actions';
-
-const mock = {625144: "Minsk", 2643743: "London"}
 
 const initialState = {
     loading: false,
-    citiesWeather: {},
-    cities: {...mock},
+    citiesWeather: [],
+    cities: {},
     currentCityWeather: null,
     city: null,
     unit: undefined,
-    error: null
+    error: null,
 };
 
 export default function(state = initialState, action) {
@@ -27,7 +27,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: true,
-                error: null
+                error: null,
             };
 
         case GET_WEATHER_SUCCESS:
@@ -40,21 +40,39 @@ export default function(state = initialState, action) {
                 },
                 city: action.city.name,
                 loading: false,
-                unit: action.unit
+                unit: action.unit,
             };
 
         case GET_WEATHER_FAIL:
             return {
                 ...state,
                 error: action.payload.message,
-                loading: false
+                loading: false,
             };
 
         case REMOVE_WEATHER_SUCCESS:
             return {
                 ...state,
                 cities: invert(omit(invert(state.cities), action.payload)),
-                currentCityWeather: state.city === action.payload ? null : state.currentCityWeather
+                currentCityWeather:
+                    state.city === action.payload
+                        ? null
+                        : state.currentCityWeather
+            };
+
+        case GET_WEATHER_ALL_SUCCESS:
+            return {
+                ...state,
+                error: null,
+                loading: false,
+                citiesWeather: action.payload
+            };
+
+        case GET_WEATHER_ALL_FAIL:
+            return {
+                ...state,
+                error: action.payload,
+                loading: false,
             };
 
         default:

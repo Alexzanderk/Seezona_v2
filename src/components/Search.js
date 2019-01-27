@@ -10,12 +10,13 @@ import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
-
+import CitiesWeatherContainer from '../containers/CitiesWeatherContainer';
 import AutoCheckWeather from './AutoCheckWeather';
 
 const Search = props => {
-    const [city, setCity] = useState('London');
+    const [city, setCity] = useState('');
     const [unit, setUnit] = useState('default');
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(
         () => {
@@ -35,17 +36,27 @@ const Search = props => {
         [props.city, props.autocheck, props.unit]
     );
 
+    function handleClickOpen() {
+        setIsOpen(true);
+    }
+
+    function handleClose() {
+        setIsOpen(false);
+    }
+
     const checkWeather = () => props.getWeather(props.city, props.unit);
 
     const handleChangeCity = event => setCity(event.target.value);
 
     const handleChangeUnit = event => {
         setUnit(event.target.value);
-        props.getWeather(props.city, event.target.value);
+        if (props.city) {
+            props.getWeather(props.city, event.target.value);
+        }
     };
 
     const handleDelete = city => () => {
-        props.removeCity(city);
+        props.removeCity(city, props.cities);
     };
     const handleGetWeather = (city, unit) => {
         props.getWeather(city, unit);
@@ -121,10 +132,30 @@ const Search = props => {
                             </Tooltip>
                         ))}
                         {props.cities.length > 1 ? (
-                            <Button>Show all cities</Button>
+                            <Button
+                                onClick={() => {
+                                    handleClickOpen();
+                                    props.getWeatherAll(
+                                        props.cities,
+                                        props.unit
+                                    );
+                                }}
+                            >
+                                Show all cities
+                            </Button>
                         ) : null}
+
+                        <CitiesWeatherContainer
+                            isOpen={isOpen}
+                            handleClose={handleClose}
+                        />
                     </Grid>
-                    <Grid container justify='space-between' item>
+                    <Grid
+                        container
+                        justify="space-between"
+                        alignItems="center"
+                        item
+                    >
                         <Button
                             color="primary"
                             type="submit"

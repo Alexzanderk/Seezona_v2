@@ -1,7 +1,5 @@
 import Api from '../../utils/api';
 
-const request = new Api();
-
 export const GET_FORECAST_REQUEST = 'GET_FORECAST_REQUEST';
 
 export const getForecastRequest = () => ({
@@ -13,7 +11,7 @@ export const GET_FORECAST_SUCCESS = 'GET_FORECAST_SUCCESS';
 export const getForecast = (city, unit) => {
     return dispatch => {
         dispatch(getForecastRequest());
-        return request
+        return Api
             .getForcaseWeather(city, unit)
             .then(({ data }) => {
                 dispatch({

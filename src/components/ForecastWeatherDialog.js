@@ -44,7 +44,7 @@ const ForecastWeatherDialog = ({
             </DialogTitle>
             <DialogContent>
                 {loading ? (
-                    <Grid container justify='center' alignItems='center'>
+                    <Grid container justify="center" alignItems="center">
                         <CircularProgress />
                     </Grid>
                 ) : (

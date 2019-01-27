@@ -22,7 +22,7 @@ const CurrentWeather = ({currentWeather, unit}) => {
                 Temperature max:
             </TableCell>
             <TableCell align="right">
-                {currentWeather.main.temp_max}
+                {Math.round(currentWeather.main.temp_max)}
                 {formatTemperature(unit)}
             </TableCell>
         </TableRow>
@@ -31,7 +31,7 @@ const CurrentWeather = ({currentWeather, unit}) => {
                 Temperature min:
             </TableCell>
             <TableCell align="right">
-                {currentWeather.main.temp_min}
+                {Math.round(currentWeather.main.temp_min)}
                 {formatTemperature(unit)}
             </TableCell>
         </TableRow>
