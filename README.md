@@ -24,8 +24,9 @@ Notes:
 
 ## If you find some bugs, please tell me! 👌🏻
 
-For used development, need : 
+For use development, need: 
 1. download or clone repo
 2. use script `npm install`
 3. use script `npm run dev`
 
+![display](seezona_test.png)
