@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-    getForecast
+    getForecast,
   }
 
 const SearchContainer = connect(mapStateToProps, mapDispatchToProps)(WeatherInfo);

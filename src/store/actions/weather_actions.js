@@ -18,7 +18,6 @@ export const getWeather = (city, unit) => {
         return request
             .getCurrentWeather(city, unit)
             .then(({ data }) => {
-                console.log(data);
                 dispatch({
                     type: GET_WEATHER_SUCCESS,
                     citiesWeather: data,
@@ -48,3 +47,10 @@ export const removeCity = city => {
         payload: city
     };
 };
+
+export const GET_WEATHER_ALL = 'GET_WEATHER_ALL'
+
+export const getWeatherAll = async (cities) => {
+    console.log(cities)
+
+} 

@@ -29,7 +29,6 @@ const ForecastWeatherDialog = ({
     forecast,
     loading
 }) => {
-    console.log(loading);
     return (
         <Dialog
             open={isOpen}

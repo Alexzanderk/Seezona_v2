@@ -9,10 +9,12 @@ import {
     REMOVE_WEATHER_SUCCESS
 } from '../actions/weather_actions';
 
+const mock = {625144: "Minsk", 2643743: "London"}
+
 const initialState = {
     loading: false,
     citiesWeather: {},
-    cities: {},
+    cities: {...mock},
     currentCityWeather: null,
     city: null,
     unit: undefined,

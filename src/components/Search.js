@@ -11,15 +11,31 @@ import Chip from '@material-ui/core/Chip';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 
+import AutoCheckWeather from './AutoCheckWeather';
+
 const Search = props => {
     const [city, setCity] = useState('London');
     const [unit, setUnit] = useState('default');
 
-    useEffect(() => {
-        // console.log(props, city, unit, chipData);
-        props.getWeather(city);
-        setCity('')
-    }, []);
+    useEffect(
+        () => {
+            let interval;
+
+            document.title = `Weather for ${props.city ? props.city : '❓'}`;
+            if (props.city && props.autocheck) {
+                interval = setInterval(checkWeather, 1000 * 10);
+            } else {
+                clearInterval(interval);
+            }
+
+            return () => {
+                clearInterval(interval);
+            };
+        },
+        [props.city, props.autocheck, props.unit]
+    );
+
+    const checkWeather = () => props.getWeather(props.city, props.unit);
 
     const handleChangeCity = event => setCity(event.target.value);
 
@@ -104,9 +120,11 @@ const Search = props => {
                                 />
                             </Tooltip>
                         ))}
-                        <Button>Show all cities</Button>
+                        {props.cities.length > 1 ? (
+                            <Button>Show all cities</Button>
+                        ) : null}
                     </Grid>
-                    <Grid item>
+                    <Grid container justify='space-between' item>
                         <Button
                             color="primary"
                             type="submit"
@@ -115,6 +133,11 @@ const Search = props => {
                         >
                             Submit
                         </Button>
+
+                        <AutoCheckWeather
+                            value={props.autocheck}
+                            change={props.toggleAutoCheck}
+                        />
                     </Grid>
                 </Grid>
             </Paper>

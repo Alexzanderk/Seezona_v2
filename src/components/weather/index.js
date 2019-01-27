@@ -27,7 +27,9 @@ export const NoWeather = () => {
                     alignItems="center"
                     style={{ height: '100%' }}
                 >
-                    <h1>NO WEATHER</h1>
+                    <h1>
+                        NO WEATHER, NO PROBLEM <span role="img">😄</span>
+                    </h1>
                 </Grid>
             </Paper>
         </Grid>
