@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# TEST SEEZONA
 
-## Available Scripts
+### Deploy [visit site (can build if state was sleep, need a little time)](https://seezona2-hfagjdrakx.now.sh/)
 
-In the project directory, you can run:
+### Git repo [https://github.com/Alexzanderk/Seezona_v2](https://github.com/Alexzanderk/Seezona_v2)
 
-### `npm start`
+What you need to do? Add few cities, because some element displayed when you add few elements
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Notes:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+1. React v16.8.0-alpha.1 with Hooks
+2. Used Material-UI
+3. Used redux selectors, configure store
+4. All actions and reducers stay in store folder it's not so big project to use one of the best practice
+5. I create API class and export instance to easy use requests
+6. Used Promise and async await to show that I can
+7. NO remove logger you can open browser console to see actions and state(redux store)
+8. Create dynamic head tittle - look on browser tab
+9. Auto check I set on 10 seconds
+10. I didn't have enough time to read normalizr 😔
+11. I didn't have enough time write all tests 😔
+12. I didn't have enough time create component to show Error 😔
+13. I didn't have enough time to deep refactoring 😔
 
-### `npm test`
+## If you find some bugs, please tell me! 👌🏻
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For used development, need : 
+1. download or clone repo
+2. use script `npm install`
+3. use script `npm run dev`
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
